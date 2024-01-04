@@ -48,12 +48,12 @@ jobs:
           echo "VERSION_NAME=${{ github.event.inputs.VERSION_NAME }}" >> .env
           echo "SKIP_DEVELOPER_MODE_CHECK=${{ github.event.inputs.SKIP_DEVELOPER_MODE_CHECK }}" >> .env
 
-          sed -i "s/{Your Deployment Key}/${{ secrets.CODE_PUSH_DEPLOYMENT_KEY }}/" "./android/app/src/main/res/values/strings.xml"
+          sed -i "s/{Your app secret here}/${{ secrets.CODE_PUSH_APP_SECRET }}/" "./android/app/src/main/assets/appcenter-config.json"
 
           if [[ "${{ github.event.inputs.RELEASE_TYPE }}" == "RELEASE" ]]; then
-            sed -i "s/{Your app secret here}/${{ secrets.CODE_PUSH_DEPLOYMENT_KEY_PRODUCTION }}/" "./android/app/src/main/assets/appcenter-config.json"
+            sed -i "s/{Your Deployment Key}/${{ secrets.CODE_PUSH_DEPLOYMENT_KEY_PRODUCTION }}/" "./android/app/src/main/res/values/strings.xml"
           elif [[ "${{ github.event.inputs.RELEASE_TYPE }}" == "STAGING" ]]; then
-            sed -i "s/{Your app secret here}/${{ secrets.CODE_PUSH_DEPLOYMENT_KEY_STAGING }}/" "./android/app/src/main/assets/appcenter-config.json"
+            sed -i "s/{Your Deployment Key}/${{ secrets.CODE_PUSH_DEPLOYMENT_KEY_STAGING }}/" "./android/app/src/main/res/values/strings.xml"
           else
             echo "Invalid RELEASE_TYPE. Supported values are RELEASE, STAGING."
             exit 1
