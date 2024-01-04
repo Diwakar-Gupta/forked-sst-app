@@ -18,7 +18,10 @@ on:
       SKIP_DEVELOPER_MODE_CHECK:
         description: 'Skip Developer Mode Check'
         default: false
-      
+      RELEASE_TYPE:
+        description: 'Release Type RELEASE|STAGING'
+        required: true
+        default: 'RELEASE'
 
 jobs:
   build:
