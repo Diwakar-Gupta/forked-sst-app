@@ -19,14 +19,9 @@ on:
         description: 'Skip Developer Mode Check'
         default: false
       RELEASE_TYPE:
-        description: 'Release Type'
+        description: 'Release Type RELEASE|STAGING'
         required: true
         default: 'RELEASE'
-        validation:
-          pattern: '^(RELEASE|STAGING)$'
-          error-message: 'Valid values are RELEASE, STAGING'
-      
-      
 
 jobs:
   build:
