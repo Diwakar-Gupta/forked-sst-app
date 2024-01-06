@@ -87,7 +87,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.event.inputs.APP_VERSION }}
-          release_name: v${{ github.event.inputs.APP_VERSION }} ${{ steps.convert_release_type.outputs.RELEASE_TYPE_LOWER }}
+          release_name: v${{ github.event.inputs.APP_VERSION }} ${{ env.RELEASE_TYPE_LOWER }}
           draft: false
           prerelease: false
 
@@ -98,5 +98,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: README.md
-          asset_name: app-${{ steps.convert_release_type.outputs.RELEASE_TYPE_LOWER }}.apk
+          asset_name: app-${{ env.RELEASE_TYPE_LOWER }}.apk
           asset_content_type: application/apk
